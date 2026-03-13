@@ -30,7 +30,7 @@ package org.jrimum.bopepo.campolivre;
 
 import static java.lang.String.format;
 import static java.math.BigDecimal.ZERO;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jrimum.bopepo.BancosSuportados;
 import static org.jrimum.domkee.banco.Banco.isCodigoDeCompensacaoOK;

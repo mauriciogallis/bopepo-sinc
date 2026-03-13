@@ -28,7 +28,7 @@
  */
 package org.jrimum.bopepo.pdf;
 
-import com.itextpdf.text.pdf.BarcodeInter25;
+import com.lowagie.text.pdf.BarcodeInter25;
 import static java.lang.String.format;
 
 import java.awt.Color;

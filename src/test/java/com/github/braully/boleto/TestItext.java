@@ -15,10 +15,10 @@
  */
 package com.github.braully.boleto;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.AcroFields;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.AcroFields;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -99,7 +99,6 @@ public class TestItext {
         form.setField("txtRsNossoNumero", "1234567890");
         form.setField("txtFcLinhaDigitavel", "00190.00009 00000.001123 34567.890016 5 77560000010023");
 
-        stamper.flush();
         stamper.close();
     }
 }

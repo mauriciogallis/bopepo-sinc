@@ -28,9 +28,9 @@
  */
 package org.jrimum.domkee.banco;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.apache.commons.lang.StringUtils.EMPTY;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 

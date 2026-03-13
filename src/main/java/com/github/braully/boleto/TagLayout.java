@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
-import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang.SerializationUtils;
 import org.jrimum.domkee.banco.IBanco;
 import org.jrimum.texgit.Fillers;
 import org.jrimum.texgit.IFiller;
@@ -1293,7 +1293,7 @@ public class TagLayout implements Serializable {
     }
 
     public TagLayout clone() {
-        return SerializationUtils.clone(this);
+        return (TagLayout) SerializationUtils.clone(this);
     }
 
     //TODO: Melhorar isso, procurar alguma lib que faça o clone e já transforme o objeto em imutavel

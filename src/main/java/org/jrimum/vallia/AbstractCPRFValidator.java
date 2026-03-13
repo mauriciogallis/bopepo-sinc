@@ -28,7 +28,7 @@
  */
 package org.jrimum.vallia;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.jrimum.ConfiguracaoJRimum;
 import org.jrimum.utilix.ObjectUtil;
 

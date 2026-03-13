@@ -40,9 +40,9 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Date;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.isNumeric;
+import static org.apache.commons.lang.StringUtils.EMPTY;
+import static org.apache.commons.lang.StringUtils.isBlank;
+import static org.apache.commons.lang.StringUtils.isNumeric;
 import org.jrimum.utilix.Dates;
 import static org.jrimum.utilix.ObjectUtil.isNotNull;
 import org.jrimum.utilix.Objects;

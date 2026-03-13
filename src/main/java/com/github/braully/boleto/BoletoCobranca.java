@@ -18,7 +18,6 @@ package com.github.braully.boleto;
 import org.jrimum.ConfiguracaoJRimum;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.apache.commons.lang3.tuple.Pair;
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.LinhaDigitavel;

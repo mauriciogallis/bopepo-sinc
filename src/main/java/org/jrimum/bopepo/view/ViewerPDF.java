@@ -28,13 +28,14 @@
  */
 package org.jrimum.bopepo.view;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.pdf.AcroFields;
-import com.itextpdf.text.pdf.BarcodeInter25;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.AcroFields;
+import com.lowagie.text.pdf.BarcodeInter25;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
 import org.jrimum.bopepo.Guia;
 
 import java.io.ByteArrayOutputStream;
@@ -48,20 +49,24 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
 
+import org.jrimum.bopepo.pdf.PDFs;
 import org.jrimum.domkee.banco.Convenio;
 import org.jrimum.domkee.banco.OrgaoRecebedor;
 import org.jrimum.domkee.banco.TipoValorReferencia;
 
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.utilix.DateUtil;
+import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.FileUtil;
 import org.jrimum.utilix.MonetaryUtil;
 import static org.jrimum.utilix.Objects.isNotNull;
 import static org.jrimum.utilix.Objects.isNull;
+
+import org.jrimum.utilix.Objects;
 import org.jrimum.utilix.PDFUtil;
 import org.jrimum.utilix.RectanglePDF;
 
@@ -517,11 +522,12 @@ class ViewerPDF {
         PdfContentByte cb = null;
 
         // Verifcando se existe o field(campo) da imagem no template do boleto.
-        List<AcroFields.FieldPosition> posCampoImgLogo = form.getFieldPositions("txtCodigoBarra");
+        float[] pos = form.getFieldPositions("txtCodigoBarra");
+        List<Rectangle> rects = getRectangles(pos);
 
-        if (isNotNull(posCampoImgLogo)) {
-            for (AcroFields.FieldPosition pos : posCampoImgLogo) {
-                RectanglePDF field = new RectanglePDF(pos.position);
+        if (!rects.isEmpty()) {
+            for (Rectangle rect : rects) {
+                RectanglePDF field = new RectanglePDF(rect);
                 cb = stamper.getOverContent(field.getPage());
                 Image imgBarCode = barCode.createImageWithBarcode(cb, null, null);
                 PDFUtil.changeField2Image(stamper, field, imgBarCode);
@@ -703,11 +709,12 @@ class ViewerPDF {
 
         if (StringUtils.isNotBlank(nomeDoCampo)) {
 
-            List<AcroFields.FieldPosition> posCampoImgLogo = form.getFieldPositions(nomeDoCampo);
+            float[] posCampoImgLogo = form.getFieldPositions(nomeDoCampo);
+            List<Rectangle> rectangles = getRectangles(posCampoImgLogo);
 
-            if (isNotNull(posCampoImgLogo)) {
-                for (AcroFields.FieldPosition fpos : posCampoImgLogo) {
-                    PDFUtil.changeField2Image(stamper, new RectanglePDF(fpos.position), imagem);
+            if (isNotNull(posCampoImgLogo) && !rectangles.isEmpty()) {
+                for (Rectangle rectangle : rectangles) {
+                    PDFUtil.changeField2Image(stamper, new RectanglePDF(rectangle), imagem);
                 }
             }
         }
@@ -742,5 +749,20 @@ class ViewerPDF {
         ToStringBuilder tsb = new ToStringBuilder(this);
         tsb.append(guia);
         return tsb.toString();
+    }
+
+    private static List<Rectangle> getRectangles(float[] pos) {
+        List<Rectangle> rects = new ArrayList<>();
+        if (isNotNull(pos)) {
+            for (int i = 0; i < pos.length; i += 5) {
+                float llx = pos[i + 1];
+                float lly = pos[i + 2];
+                float urx = pos[i + 3];
+                float ury = pos[i + 4];
+
+                rects.add(new Rectangle(llx, lly, urx, ury));
+            }
+        }
+        return rects;
     }
 }

@@ -31,7 +31,7 @@ package org.jrimum.vallia;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 
 public class GuiaLinhaDigitavelDV extends AbstractDigitoVerificador implements Serializable {

@@ -28,7 +28,7 @@
  */
 package org.jrimum.bopepo.pdf;
 
-import com.itextpdf.text.pdf.PdfDate;
+import com.lowagie.text.pdf.PdfDate;
 import static org.jrimum.utilix.Objects.checkNotNull;
 import static org.jrimum.utilix.Objects.isNotNull;
 

@@ -28,7 +28,7 @@
  */
 package org.jrimum.bopepo.pdf;
 
-import com.itextpdf.text.Rectangle;
+import com.lowagie.text.Rectangle;
 
 /**
  * <p>

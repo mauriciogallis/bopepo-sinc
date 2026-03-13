@@ -32,7 +32,7 @@ import org.jrimum.utilix.Objects;
 import org.jrimum.utilix.Strings;
 import org.jrimum.vallia.AbstractCPRFValidator;
 
-import static org.apache.commons.lang3.StringUtils.isNumeric;
+import static org.apache.commons.lang.StringUtils.isNumeric;
 
 /**
  * <p>

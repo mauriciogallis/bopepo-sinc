@@ -1,6 +1,6 @@
 package org.jrimum.utilix;
 
-import com.itextpdf.text.Rectangle;
+import com.lowagie.text.Rectangle;
 
 public class RectanglePDF extends Rectangle {
 

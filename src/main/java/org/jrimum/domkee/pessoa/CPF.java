@@ -32,7 +32,7 @@ import org.jrimum.utilix.Exceptions;
 import org.jrimum.vallia.AbstractCPRFValidator;
 import org.jrimum.vallia.AbstractCPRFValidator.TipoDeCPRF;
 
-import static org.apache.commons.lang3.StringUtils.isNumeric;
+import static org.apache.commons.lang.StringUtils.isNumeric;
 import static org.jrimum.utilix.Strings.fillWithZeroLeft;
 
 /**

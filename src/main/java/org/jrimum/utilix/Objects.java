@@ -28,7 +28,7 @@
  */
 package org.jrimum.utilix;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * Classe utilitária para validações de objetos em geral, como verificações de
@@ -318,7 +318,7 @@ public final class Objects {
     /**
      * Exibe os valores de instância para um objeto JRimum.
      *
-     * @see org.apache.commons.lang3.builder.ToStringBuilder#reflectionToString
+     * @see org.apache.commons.lang.builder.ToStringBuilder#reflectionToString
      *
      * @since 0.2
      *
