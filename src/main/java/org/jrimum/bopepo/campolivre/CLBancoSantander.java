@@ -119,7 +119,12 @@ class CLBancoSantander extends AbstractCLSantander implements CampoLivre {
 	/**
 	 * 104- Cobrança Simples Eletrônica - COM Registro
 	 */
-	private static final int COBRANCA_SIMPLES_ELETRONICA_COM_REGISTRO = 104;	
+	private static final int COBRANCA_SIMPLES_ELETRONICA_COM_REGISTRO = 104;
+
+	/**
+	 * 009- Carteira Customizada Byd
+	 */
+	private static final int COBRANCA_CUSTOMIZADA_BYD = 9;
 
 	CLBancoSantander(Titulo titulo) {
 		super(FIELDS_LENGTH);
@@ -156,12 +161,19 @@ class CLBancoSantander extends AbstractCLSantander implements CampoLivre {
 		case CARTEIRA_RAPIDA_SEM_REGISTRO:
 		case CARTEIRA_SIMPLES_SEM_REGISTRO:
 		case COBRANCA_SIMPLES_ELETRONICA_COM_REGISTRO:
-
 			this.add(new FixedField<Integer>(conta.getCarteira().getCodigo(), 3,
 					Fillers.ZERO_LEFT));
 
 			break;
-
+        case COBRANCA_CUSTOMIZADA_BYD:
+            if(conta.getCarteira().isComRegistro()){
+                this.add(new FixedField<>(CARTEIRA_RAPIDA_COM_REGISTRO, 3,
+                        Fillers.ZERO_LEFT));
+            } else {
+                this.add(new FixedField<>(CARTEIRA_SIMPLES_SEM_REGISTRO, 3,
+                        Fillers.ZERO_LEFT));
+            }
+            break;
 		default:
 			
 			Exceptions.throwIllegalArgumentException(String.format(
