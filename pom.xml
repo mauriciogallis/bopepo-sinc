@@ -6,7 +6,7 @@
     <groupId>io.github.braully</groupId>
     <artifactId>bpp-cobranca</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0-alpha-SNAPSHOT</version>
+    <version>2.0.1</version>
     <name>BPP-Cobrança</name>
     <description>This is a fork and merge from JRimum ( http://www.jrimum.org ),
         - Bopepo:  https://github.com/jrimum/bopepo
@@ -14,7 +14,7 @@
         - Valia:   https://github.com/jrimum/vallia
         - Utilix:  https://github.com/jrimum/utilix
         - Domkee:  https://github.com/jrimum/domkee
-        For Brazillian Boleto Payment Method. So much thanks for original authors: 
+        For Brazillian Boleto Payment Method. So much thanks for original authors:
         Gilmar P. S. L, Misael Barreto and Rômulo Augusto.
     </description>
     <url>http://github.com/braully/bopepo</url>
